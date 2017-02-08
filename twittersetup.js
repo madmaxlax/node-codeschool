@@ -1,9 +1,9 @@
 var request = require('request');
-require('global-tunnel').initialize({
-  host: 'proxy-eu.shell.com',
-  port: 8080,
-  tunnel: 'both'
-});
+// require('global-tunnel').initialize({
+//   host: 'proxy-eu.shell.com',
+//   port: 8080,
+//   tunnel: 'both'
+// });
 var key = 'byonmgh97tRtffw9STWNNp8TX';
 var secret = 'ogrc07x2PglxksKC5AjRZmCGoDgQ1Wfp4FczTetqwkN0TTo8Cj';
 console.log('running twitter setup');
