@@ -3,19 +3,35 @@
 <title>Chat with Sockets</title>
 <script>
     var socket = io.connect('http://localhost:8080');
+    socket.on('connect',function(data){
+        nickname = prompt("What is your nickname?");
+        socket.emit('join',nickname);
+    });
     socket.on('messages',function(data){
-        $('#message_received').text(data.hello);
+        insertMessage('server',data.hello);
     });
     $(function(){
         $('form#chat_form').submit(function(e){
             var message = $('#chat_input').val();
             $('#chat_input').val("");
+            insertMessage('me',message);
             socket.emit('messages',message);
             e.preventDefault();
             return false;
         });
     });
+    function insertMessage(user, text){
+        $('#message_received').html($('#message_received').html()+'<br/>'+user+': '+text).animate({scrollTop: $('#message_received').prop("scrollHeight")}, 500);;
+    }
 </script>
+<style>
+    #message_received{
+        height: 20%;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+</style>
+<h1>Chatter</h1>
 <div id="message_received"></div>
 <form id="chat_form">
     <input type="text" name="messagetext" id="chat_input">
