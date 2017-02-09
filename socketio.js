@@ -20,6 +20,7 @@ io.on('connection', function (client) {
 
         client.emit("messages", { hello: 'new user ' + name + ' joined' });        
         client.broadcast.emit("messages", { hello: 'new user ' + name + ' joined' });        
+        //note, broadcast sends message to everyone ELSE, besides current client
     });
 });
 app.get('/', function (req, res) {
