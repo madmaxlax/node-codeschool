@@ -14,7 +14,7 @@
         $('form#chat_form').submit(function(e){
             var message = $('#chat_input').val();
             $('#chat_input').val("");
-            insertMessage('me',message);
+            //insertMessage('me',message);
             socket.emit('messages',message);
             e.preventDefault();
             return false;
